@@ -228,7 +228,8 @@
 
                   :else result))))
       (catch InterruptedException e
-        (conch/destroy proc)))))
+        (conch/destroy proc)
+        (throw e)))))
 
 (defn execute [name & args]
   (let [[[options] args] ((juxt filter remove) map? args)]
